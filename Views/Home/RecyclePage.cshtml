@@ -1,0 +1,342 @@
+﻿@model List<homework_4.Models.RecyclableMaterials>
+
+<style>
+    .selectOption {
+        display: none;
+    }
+
+    .business {
+        display: none;
+    }
+
+    .domestic {
+        display: none;
+    }
+
+    .dropoff {
+        display: none;
+    }
+
+    .pickup {
+        background-color: mediumseagreen;
+        width: 300px;
+        height: 100px;
+        margin: 7px;
+        display: inline-block;
+    }
+
+    .dropoffbtn {
+        background-color: mediumseagreen;
+        width: 300px;
+        height: 100px;
+        margin: 7px;
+        display: inline-block;
+    }
+
+    .domesticbtn {
+        background-color: darkgreen;
+        width: 150px;
+        height: 60px;
+    }
+
+    .businessbtn {
+        background-color: darkgreen;
+        width: 150px;
+        height: 60px;
+    }
+
+    .submit {
+        background-color: seagreen;
+    }
+
+    .display {
+        display: none;
+        color: lightslategray;
+    }
+</style>
+
+<h2>Recycle</h2>
+
+<input type="button" id="pickup" class="pickup" value="Pick me up" />
+<div class="display" id="display">
+    <p>*please ensure that you have the correct delivery address</p>
+</div>
+
+<div class="selectOption" id="selectOption">
+    <input type="button" value="domestic" class="domesticbtn" id="domesticOption" />
+
+    <input type="button" value="business" class="businessbtn" id="businessOption" />
+</div>
+
+<div class="business" id="business">
+    <p>please fill in the details for your next pick up</p>
+    <label for="bins">Number of bins</label>
+    <select id="bins">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+
+    <label for="type">Type of material</label>
+    <select id="material">
+        <option value="plastic">Plastic</option>
+        <option value="paper">Paper</option>
+        <option value="glass">Glass</option>
+        <option value="metal">Metal</option>
+    </select>
+
+    <input type="submit" class="submit" id="submitbus" />
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Number of bins</th>
+                    <th>Recyclable material</th>
+                </tr>
+            </thead>
+            <tbody id="table-body2">
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="domestic" id="domestic">
+    <p>please fill in the details for your next pick up</p>
+
+    <label for="bags">Number of bags</label>
+    <select id="nobagsdom">
+
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+
+    </select>
+    <label for="type">Type of material</label>
+    <select id="material1">
+        <option value="plastic">Plastic</option>
+        <option value="paper">Paper</option>
+        <option value="glass">Glass</option>
+        <option value="metal">Metal</option>
+    </select>
+
+    <input type="submit" class="submit" id="submitdom" />
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>number of bags</th>
+                    <th>recyclable material</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<input type="button" id="dropoff" class="dropoffbtn" value="Drop me off" />
+
+<div class="dropoff" id="dropOff">
+    <label for="locations">Drop-off Locations</label>
+    <select id="location">
+        <option value="Atterbury">Atterbury Value Park</option>
+        <option value="Hillcrest">Hillcrest Boulevard Shopping Centre</option>
+        <option value="Loftus">Loftus Park</option>
+        <option value="Olympus">Olympus Village</option>
+        <option value="Willows">Willows Crossing Shopping Centre</option>
+    </select>
+
+    <label for="bags">Number of bags</label>
+    <select id="nobagsdrop">
+
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+
+    </select>
+    <label for="type">Type of material</label>
+    <select id="material2">
+        <option value="plastic">Plastic</option>
+        <option value="paper">Paper</option>
+        <option value="glass">Glass</option>
+        <option value="metal">Metal</option>
+    </select>
+
+    <input type="submit" class="submit" id="submitdrop" />
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Number of bags</th>
+                    <th>Recyclable material</th>
+                    <th>Drop-off location</th>
+                </tr>
+            </thead>
+            <tbody id="table-body1">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="container">
+    <h3>Past collections</h3>
+    <table class="table">
+        <tr>
+            <th>Number of bags</th>
+            <th>Date</th>
+            <th>Address</th>
+            <th>Type</th>
+            <th>Points Collected</th>
+        </tr>
+        @foreach (var Rmaterial in Model)
+        {
+            <tr>
+                <td>@Rmaterial.numberOfBags</td>
+                <td>@Rmaterial.collectionDate</td>
+                <td>@Rmaterial.address</td>
+                <td>@Rmaterial.MaterialInfo()</td>
+                <td>@Rmaterial.getPoints()</td>
+            </tr>
+        }
+        <tr>
+            <td>Total points:</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+
+
+<script>
+    var pickup = document.getElementById("pickup");
+    var display = document.getElementById("selectOption");
+    var warning = document.getElementById("display");
+
+    pickup.addEventListener("click", function DisplayOptions() {
+        if (display.style.display == "none") {
+            display.style.display = "block";
+            warning.style.display = "inline-block";
+        }
+        else {
+            display.style.display = "none";
+            warning.style.display = "none";
+        }
+
+
+    });
+
+    var businessbtn = document.getElementById("businessOption");
+    var domesticbtn = document.getElementById("domesticOption");
+
+    var business = document.getElementById("business");
+    var domestic = document.getElementById("domestic");
+
+    businessbtn.addEventListener("click", function displayBusinessOption() {
+
+        if (business.style.display == "none") {
+            business.style.display = "block";
+        }
+        else {
+            business.style.display = "none";
+        }
+    });
+
+    domesticbtn.addEventListener("click", function displayDomesticOption() {
+        if (domestic.style.display == "none") {
+            domestic.style.display = "block";
+        }
+        else {
+            domestic.style.display = "none";
+        }
+        console.log(display);
+    });
+
+    var dropoffbtn = document.getElementById("dropoff");
+    var dropoff = document.getElementById("dropOff");
+
+    dropoffbtn.addEventListener("click", function displayDropoffOption() {
+        if (dropoff.style.display == "none") {
+            dropoff.style.display = "block";
+        }
+        else {
+            dropoff.style.display = "none";
+        }
+    });
+
+    var submitbus = document.getElementById("submitbus");
+    var submitdom = document.getElementById("submitdom");
+    var submitdrop = document.getElementById("submitdrop");
+
+    var bins = document.getElementById("bins");
+    var material = document.getElementById("material");
+
+    var nobagsdom = document.getElementById("nobagsdom");
+    var material1 = document.getElementById("material2");
+
+    var nobagsdrop = document.getElementById("nobagsdrop");
+    var material2 = document.getElementById("material2");
+    var location = document.getElementById("location");
+
+    submitbus.addEventListener("click", addRowBus);
+    submitdom.addEventListener("click", addRowDom);
+    submitdrop.addEventListener("click", addRowDrop);
+
+    function addRowBus() {
+        var table = document.getElementById("table-body2");
+        var row = table.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = bins.value;
+        cell2.innerHTML = material.value;
+
+    }
+
+    function addRowDom() {
+        var table = document.getElementById("table-body");
+        var row = table.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = nobagsdom.value;
+        cell2.innerHTML = material1.value;
+    }
+
+    function addRowDrop() {
+        var table = document.getElementById("table-body1");
+        var row = table.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = nobagsdrop.value;
+        cell2.innerHTML = material2.value;
+        cell3.innerHTML = location.value;
+    }
+</script>
+

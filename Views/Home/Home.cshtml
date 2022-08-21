@@ -1,0 +1,139 @@
+﻿<h2>Home</h2>
+
+
+<style>
+    .images{
+        display:none;
+    }
+    .UseC1 {
+        height: 60px;
+        width: 70%;
+        background-color: seagreen;
+        margin: 5px;
+    }
+    .UseC2 {
+        height: 60px;
+        width: 70%;
+        background-color: seagreen;
+        margin:5px;
+    }
+    .UseC3 {
+        height: 60px;
+        width: 70%;
+        background-color: seagreen;
+        margin: 5px;
+    }
+    .UseC4 {
+        height: 60px;
+        width: 70%;
+        background-color: seagreen;
+        margin: 5px;
+    }
+    .classDiagram {
+        height: 60px;
+        width: 70%;
+        background-color: seagreen;
+        margin: 5px;
+    }
+    .cd{
+        display:none;
+    }
+</style>
+<div class="uc1">
+    <input type="button" id="uc1" class="UseC1" value="USE CASE ONE" />
+       <div class="images" id="images1">
+       <img src="/images/uc1.png" alt="use case one" />
+       </div>
+</div>
+
+<div class="uc2">
+    <input type="button" id="uc2" class="UseC2" value="USE CASE TWO" />
+
+    <div class="images" id="images2">
+    <img src="/images/uc2.png" alt="use case two" />
+    </div>
+
+</div>
+<div class="uc3">
+    <input type="button" id="uc3" class="UseC3" value="USE CASE THREE" />
+        <div class="images" id="images3">
+        <img src="/images/uc3.png" alt="use case three" />
+        </div>
+
+</div>
+<div class="uc4">
+        <input type="button" id="uc4" class="UseC4" value="USE CASE FOUR" />
+
+        <div class="images" id="images4">
+        <img src="/images/uc4.png" alt="use case four" />
+        </div>
+</div>
+
+<div class="class-diagram">
+    <input type="button" id="classDiagram" class="classDiagram"value="CLASS DIAGRAM" />
+
+    <div class="cd" id="cd">
+    <img src="/images/class.png" alt="class diagram" />
+        </div>
+</div>
+
+<script>
+    var btn1 = document.getElementById("uc1");
+    var btn2 = document.getElementById("uc2");
+    var btn3 = document.getElementById("uc3");
+    var btn4 = document.getElementById("uc4");
+    var btn5 = document.getElementById("classDiagram");
+
+    var uc1 = document.getElementById("images1");
+    var uc2 = document.getElementById("images2");
+    var uc3 = document.getElementById("images3");
+    var uc4 = document.getElementById("images4");
+    var cd = document.getElementById("cd");
+
+
+    btn1.addEventListener("click", function showMe1() {
+        if (uc1.style.display == "none") {
+            uc1.style.display = "block";
+        }
+        else {
+            uc1.style.display = "none";
+        }
+    });
+
+    btn2.addEventListener("click", function showMe2() {
+        if (uc2.style.display == "none") {
+            uc2.style.display = "block";
+        }
+        else {
+            uc2.style.display = "none";
+        }
+    });
+
+    btn3.addEventListener("click", function showMe3() {
+        if (uc3.style.display == "none") {
+            uc3.style.display = "block";
+        }
+        else {
+            uc3.style.display = "none";
+        }
+    });
+
+    btn4.addEventListener("click", function showMe4() {
+        if (uc4.style.display == "none") {
+            uc4.style.display = "block";
+        }
+        else {
+            uc4.style.display = "none";
+        }
+    });
+
+    btn5.addEventListener("click", function showMe5() {
+        if (cd.style.display == "none") {
+            cd.style.display = "block";
+        }
+        else {
+            cd.style.display = "none";
+        }
+    });
+
+</script>

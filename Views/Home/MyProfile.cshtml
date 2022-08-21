@@ -1,0 +1,210 @@
+﻿<style>
+    .editdetails{
+        display:none;
+    }
+    .edit{
+        background-color: darkgreen;
+        width:100px;
+        height:50px;
+    }
+    .save {
+        background-color: darkgreen;
+        width: 100px;
+        height: 50px;
+    }
+</style>
+
+
+<h2>My Profile</h2>
+
+<div class="details" id="details">
+    <label>Name</label>
+    <p id="name">Simphiwe </p>
+
+    <label>Surname</label>
+    <p id="surname">Skhonde</p>
+
+    <label>Area</label>
+    <p id="area">Hatfield</p>
+
+    <label>Address</label>
+    <p id="address">1083 Prospect Street</p>
+
+    <label>Cell number</label>
+    <p id="number">0631064611</p>
+
+    <label>Email address</label>
+    <p id="email">skhondesimphiwe@gmail.com</p>
+
+
+    <label for="date">Next available pick up date</label>
+    <p id="date"></p>
+
+    <h3>my points</h3>
+    <p id="points"></p>
+
+    <button id="edit" class="edit">Edit</button>
+
+
+
+</div>
+<br />
+<br />
+
+<div class="editdetails" id="editdetails">
+    <label for="name">Name</label>
+    <input type="text" id="nameedited" />
+    <br />
+    <br />
+
+    <label for="surname">Surname</label>
+    <input type="text" id="surnameedited" />
+    <br />
+    <br />
+
+    <label>Area</label>
+    <select id="areaedited">
+        <option value="Akasia">Akasia</option>
+        <option value="Arcaida">Arcadia</option>
+        <option value="Brooklyn">Brooklyn</option>
+        <option value="Colbyn">Colbyn</option>
+        <option value="Cullinan">Cullinan</option>
+        <option value="Danville">Danville</option>
+        <option value="Equestria">Equestria</option>
+        <option value="FaerieGlen">Faerie Glen</option>
+        <option value="Garsfontein">Garsfontein</option>
+        <option value="Grootvlei">Grootvlei</option>
+        <option value="Hatfield">Hatfield</option>
+        <option value="Hazeldean">Hazeldean</option>
+        <option value="Hillcrest">Hillcrest</option>
+        <option value="KarenPark">Karen Park</option>
+        <option value="Kirkney">Kirkney</option>
+        <option value="Montana">Montana</option>
+        <option value="Mooikloof">Mooikloof</option>
+        <option value="PhilipNel">Philip Nel Park</option>
+        <option value="Proclamation">Proclamation Hill</option>
+        <option value="Queenswood">Queenswood</option>
+        <option value="Rayton">Rayton</option>
+        <option value="Riviera">Riviera</option>
+        <option value="Roodeplaat">Roodeplaat</option>
+        <option value="Rosslyn">Rosslyn</option>
+        <option value="TheHills">The Hills</option>
+        <option value="Orchards">The Orchards</option>
+        <option value="Waterklof">Waterklof</option>
+        <option value="Waterval">Waterval</option>
+        <option value="Watloo">Watloo</option>
+        <option value="Willows">Willow Park Manor</option>
+        <option value="Wonderboom">Wonderboom</option>
+    </select>
+    <br />
+    <br />
+
+    <label for="address">Address</label>
+    <input type="text" id="addressedited" />
+    <br />
+    <br />
+    <label for="cell">Cell phone number</label>
+    <input type="text" id="celledited" />
+    <br />
+    <br />
+
+    <label for="email">Email Address</label>
+    <input type="text" id="emailedited" />
+    <br />
+    <br />
+
+  
+    <button id="save" class="save">Save Changes</button>
+
+
+</div>
+
+<script>
+    
+    const name = document.getElementById("name");
+    var surname = document.getElementById("surname");
+    var area = document.getElementById("area");
+    var cell = document.getElementById("number");
+    var address = document.getElementById("address");
+    var email = document.getElementById("email");
+
+    const name1 = document.getElementById("nameedited");
+    var surname1 = document.getElementById("surnameedited");
+    var area1 = document.getElementById("areaedited");
+    var address1 = document.getElementById("addressedited");
+    var cell1 = document.getElementById("celledited");
+    var email1 = document.getElementById("emailedited");
+
+    var editbtn = document.getElementById("edit");
+    var savebtn = document.getElementById("save");
+
+    var space1 = document.getElementById("details");
+    var space2 = document.getElementById("editdetails");
+
+    var deliveryDate = document.getElementById("date");
+    var today = new Date();
+    let day = 0;
+    let month = 0;
+    let year = 0;
+    let fullDate = 0;
+
+    const newDate = new Date();
+
+   
+
+    function pickDate() {
+        
+        if (area.innerHTML == "Akasia" || "Arcaida" || "Brooklyn" || "Colbyn" || "Cullinan" || "Hatfield" || "Hillcrest") {
+            newDate.setDate(today.getDate() + 1);
+        }
+        else if (area.innerHTML == "Danville" || "Equestria" || "Faerie Glen" || "Garsfontein" || "Grootvlei" || "Hazeldean") {
+            newDate.setDate(today.getDate() + 3);
+        }
+        else if (area.innerHTML == "Karen Park" || "Kirkney" || "Montana" || "Mooikloof" || "Philip Nel Park" || "Proclamation Hill") {
+            newDate.setDate(today.getDate() + 5);
+        }
+        else if (area.innerHTML == "Queenswood" || "Rayton" || "Riviera" || "Roodeplaat" || "Rosslyn" || "The Hills") {
+            newDate.setDate(today.getDate() + 4);
+        }
+        else if (area.innerHTML == "The Orchards" || "Waterklof" || "Waterval" || "Watloo" || "Willow Park Manor" || "Wonderboom") {
+            newDate.setDate(today.getDate() + 2);
+        }
+            day = newDate.getDate();
+            month = String(newDate.getMonth() + 1).padStart(2, "0");
+            year = newDate.getFullYear();
+            fullDate = day + "." + month + "." + year + ".";
+
+            deliveryDate.innerHTML = fullDate;
+        }
+      
+
+        
+     
+    window.onload = pickDate;
+    
+
+    editbtn.addEventListener("click", function EditDetails() {
+       
+        $("#space1").fadeTo("slow", 0.4);
+        space2.style.display = "block";
+            
+       
+        
+    });
+
+    savebtn.addEventListener("click", function SaveDetails() {
+
+        name.innerHTML = name1.value;
+        surname.innerHTML = surname1.value;
+        area.innerHTML = area1.value;
+        address.innerHTML = address1.value;
+        email.innerHTML = email1.value;
+   
+        space2.style.display = "none";
+        
+    });
+    savebtn.addEventListener("click", pickDate);
+        
+
+
+</script>
